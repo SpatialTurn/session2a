@@ -32,13 +32,13 @@ QGIS offers several tools for analyzing and visualizing raster data, including d
 
 2. Click the **Templates** tab and select the blank template option.
 
-![Blank QGIS template selection screen.](assets/01_BlankQGISTemplate.png "Blank QGIS Template")
+![Blank QGIS template selection screen.](/assets/01_BlankQGISTemplate.png "Blank QGIS Template")
 
 3. From the menu bar, click **Layer → Add Layer → Add Raster Layer**. This opens the Data Source Manager.
 
 4. Click the three-dot button next to **Raster dataset(s)**, navigate to your DEM `.tif` file, and click **Open**, then **Add**.
 
-![DEM loaded into QGIS in grayscale.](assets/02_DEM_Loaded.png "DEM Loaded")
+![DEM loaded into QGIS in grayscale.](/assets/02_DEM_Loaded.png "DEM Loaded")
 
 The DEM will appear in grayscale on the map canvas. Darker pixels represent lower elevations and lighter pixels represent higher elevations.
 
