@@ -257,6 +257,18 @@
 </div>
 <!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush4">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading4">
+        <a href="dem-analysis.html">3. DEM Analysis and Visualization in QGIS</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -880,6 +892,269 @@ any links that you are not going to use.
  -->
 </div>
 </div>
+</section></section><section id="aio-dem-analysis"><p>Content from <a href="dem-analysis.html">DEM Analysis and Visualization in QGIS</a></p>
+<hr>
+<p>Last updated on 2026-06-23 |
+
+        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/dem-analysis.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do I load and reproject a DEM in QGIS?</li>
+<li>What can slope, aspect, and hillshade tell us about a
+landscape?</li>
+<li>How do I visualize elevation classes using symbology?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Load a DEM into QGIS and reproject it to a metric coordinate
+system</li>
+<li>Generate slope, aspect, and hillshade layers from a DEM</li>
+<li>Apply pseudocolor symbology to visualize elevation classes</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<hr class="half-width">
+<p>QGIS offers several tools for analyzing and visualizing raster data,
+including digital elevation models (DEMs) and multispectral satellite
+imagery. In this session we will work with the SRTM DEM you downloaded
+from EarthExplorer in the previous session to generate slope, aspect,
+and hillshade layers, and then apply color symbology to visualize
+elevation classes.</p>
+<hr></section><section><h2 class="section-heading" id="loading-the-dem">Loading the DEM<a class="anchor" aria-label="anchor" href="#loading-the-dem"></a>
+</h2>
+<hr class="half-width">
+<ol style="list-style-type: decimal">
+<li><p>Open the <strong>QGIS Desktop</strong> application. On startup
+you will see a popup with two tabs: <strong>Recent</strong> and
+<strong>Templates</strong>.</p></li>
+<li><p>Click the <strong>Templates</strong> tab and select the blank
+template option.</p></li>
+</ol>
+<figure><img src="assets/01_BlankQGISTemplate.png" title="Blank QGIS Template" alt="Blank QGIS template selection screen." class="figure mx-auto d-block"><div class="figcaption">Blank QGIS template selection screen.</div>
+</figure><ol start="3" style="list-style-type: decimal">
+<li><p>From the menu bar, click <strong>Layer → Add Layer → Add Raster
+Layer</strong>. This opens the Data Source Manager.</p></li>
+<li><p>Click the three-dot button next to <strong>Raster
+dataset(s)</strong>, navigate to your DEM <code>.tif</code> file, and
+click <strong>Open</strong>, then <strong>Add</strong>.</p></li>
+</ol>
+<figure><img src="assets/02_DEM_Loaded.png" title="DEM Loaded" alt="DEM loaded into QGIS in grayscale." class="figure mx-auto d-block"><div class="figcaption">DEM loaded into QGIS in grayscale.</div>
+</figure><p>The DEM will appear in grayscale on the map canvas. Darker pixels
+represent lower elevations and lighter pixels represent higher
+elevations.</p>
+<hr></section><section><h2 class="section-heading" id="reprojecting-the-dem">Reprojecting the DEM<a class="anchor" aria-label="anchor" href="#reprojecting-the-dem"></a>
+</h2>
+<hr class="half-width">
+<p>The raw DEM uses a <strong>geographic coordinate system</strong> with
+units in degrees. For meaningful terrain analysis we need a
+<strong>projected coordinate system</strong> that uses meters.</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Right-click your DEM layer in the <strong>Layers</strong> panel
+and select <strong>Properties</strong>. Under the
+<strong>Information</strong> tab, scroll to <strong>Coordinate Reference
+System (CRS)</strong> to confirm the current CRS uses geographic units.
+Close the dialog.</p></li>
+<li>
+<p>From the menu bar, select <strong>Raster → Projections → Warp
+(Reproject)</strong>.</p>
+<ul>
+<li>Click the icon next to <strong>Target CRS</strong>
+</li>
+<li>Select <strong>Predefined CRS</strong> from the dropdown</li>
+<li>Search for <code>26916</code> and select <strong>NAD83 / UTM zone
+16N</strong>
+</li>
+<li>Click <strong>Run</strong>
+</li>
+</ul>
+</li>
+</ol>
+<figure><img src="assets/03_ReprojectedLayers.png" title="Reprojected Layers" alt="Reprojected DEM layer alongside the original." class="figure mx-auto d-block"><div class="figcaption">Reprojected DEM layer alongside the
+original.</div>
+</figure><p>A new layer called <strong>Reprojected</strong> will appear in the
+Layers panel.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Right-click the original DEM layer and select <strong>Remove
+Layer</strong>. Then right-click the reprojected layer, select
+<strong>Rename Layer</strong>, and rename it to
+<code>DEM_Analysis</code>.</li>
+</ol>
+<div id="why-utm-zone-16n" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="why-utm-zone-16n" class="callout-inner">
+<h3 class="callout-title">Why UTM Zone 16N?</h3>
+<div class="callout-content">
+<p>This workshop uses study areas in Indiana, which falls within UTM
+zone 16N. If your area of interest is elsewhere, choose the appropriate
+UTM zone for your location.</p>
+</div>
+</div>
+</div>
+<hr></section><section><h2 class="section-heading" id="terrain-analysis">Terrain Analysis<a class="anchor" aria-label="anchor" href="#terrain-analysis"></a>
+</h2>
+<hr class="half-width">
+<p>With a projected DEM we can now generate three derived layers: slope,
+aspect, and hillshade. All three are found under <strong>Raster →
+Analysis</strong> in the menu bar.</p>
+<div class="section level3">
+<h3 id="slope">Slope<a class="anchor" aria-label="anchor" href="#slope"></a>
+</h3>
+<ol start="8" style="list-style-type: decimal">
+<li>Select <strong>Raster → Analysis → Slope</strong>. Ensure the input
+layer is <code>DEM_Analysis</code> and click <strong>Run</strong>.</li>
+</ol>
+<figure><img src="assets/04_Slope.png" title="Slope" alt="Slope layer generated from the DEM." class="figure mx-auto d-block"><div class="figcaption">Slope layer generated from the DEM.</div>
+</figure><p>Slope measures how steep the terrain is at each pixel — the rate of
+elevation change over horizontal distance. Values range from 0° (flat)
+to 90° (vertical cliff). Slope is commonly used to assess hiking trail
+difficulty, landslide risk, and water runoff potential.</p>
+</div>
+<div class="section level3">
+<h3 id="aspect">Aspect<a class="anchor" aria-label="anchor" href="#aspect"></a>
+</h3>
+<ol start="9" style="list-style-type: decimal">
+<li>Select <strong>Raster → Analysis → Aspect</strong>. Ensure the input
+layer is <code>DEM_Analysis</code> and click <strong>Run</strong>.</li>
+</ol>
+<figure><img src="assets/05_Aspect.png" title="Aspect" alt="Aspect layer generated from the DEM." class="figure mx-auto d-block"><div class="figcaption">Aspect layer generated from the DEM.</div>
+</figure><p>Aspect indicates which compass direction each slope faces. Values run
+from 0° to 360°, where 0°/360° is north, 90° is east, 180° is south, and
+270° is west. Aspect is useful for analyzing sun exposure, vegetation
+patterns, and snowmelt behavior.</p>
+</div>
+<div class="section level3">
+<h3 id="hillshade">Hillshade<a class="anchor" aria-label="anchor" href="#hillshade"></a>
+</h3>
+<ol start="10" style="list-style-type: decimal">
+<li>Select <strong>Raster → Analysis → Hillshade</strong>. Ensure the
+input layer is <code>DEM_Analysis</code> and click
+<strong>Run</strong>.</li>
+</ol>
+<figure><img src="assets/06_Hillshade.png" title="Hillshade" alt="Hillshade layer generated from the DEM." class="figure mx-auto d-block"><div class="figcaption">Hillshade layer generated from the DEM.</div>
+</figure><p>Hillshade simulates how sunlight would illuminate the terrain from a
+given position. Brighter pixels receive more direct light; darker pixels
+are in shadow. Hillshade is primarily a visual aid — it makes topography
+easier to interpret at a glance but does not contain analytical data of
+its own.</p>
+<div id="exercise-1-compare-terrain-layers" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-1-compare-terrain-layers" class="callout-inner">
+<h3 class="callout-title">Exercise 1: Compare Terrain Layers</h3>
+<div class="callout-content">
+<p>Toggle each of the three layers (slope, aspect, hillshade) on and off
+in the Layers panel. For your study area, identify a feature that is
+most visible in one layer but hard to see in another. What does each
+layer emphasize?</p>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</section><section><h2 class="section-heading" id="visualizing-elevation-classes">Visualizing Elevation Classes<a class="anchor" aria-label="anchor" href="#visualizing-elevation-classes"></a>
+</h2>
+<hr class="half-width">
+<p>The grayscale DEM is hard to read. Applying a color ramp makes
+elevation patterns much easier to interpret.</p>
+<ol start="11" style="list-style-type: decimal">
+<li><p>In the <strong>Layers</strong> panel, uncheck every layer except
+<code>DEM_Analysis</code> so only the original DEM is visible.</p></li>
+<li><p>Right-click <code>DEM_Analysis</code>, select
+<strong>Properties</strong>, and navigate to the
+<strong>Symbology</strong> tab.</p></li>
+<li>
+<p>Change the <strong>Render type</strong> from <em>Singleband
+gray</em> to <strong>Singleband pseudocolor</strong>. Then:</p>
+<ul>
+<li>Set the <strong>Color ramp</strong> to
+<strong>Spectral</strong>
+</li>
+<li>Set the <strong>Mode</strong> to <strong>Equal
+Interval</strong>
+</li>
+<li>Click <strong>Classify</strong>, then <strong>Apply</strong>, then
+<strong>OK</strong>
+</li>
+</ul>
+</li>
+</ol>
+<figure><img src="assets/07_DEMClassification.png" title="DEM Classification" alt="DEM with spectral pseudocolor classification applied." class="figure mx-auto d-block"><div class="figcaption">DEM with spectral pseudocolor classification
+applied.</div>
+</figure><p>Equal interval divides the full elevation range into classes of equal
+size. You can adjust the <strong>number of classes</strong> to the right
+of the mode selector — try different values and classification modes
+(e.g., quantile) to see how the visualization changes.</p>
+<div id="exercise-2-experiment-with-symbology" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-2-experiment-with-symbology" class="callout-inner">
+<h3 class="callout-title">Exercise 2: Experiment with Symbology</h3>
+<div class="callout-content">
+<ol style="list-style-type: decimal">
+<li>Reopen the Symbology tab for <code>DEM_Analysis</code>
+</li>
+<li>Try changing the classification mode from <strong>Equal
+Interval</strong> to <strong>Quantile</strong> — how does the map
+change?</li>
+<li>Try a different color ramp (e.g., <strong>Viridis</strong> or
+<strong>Magma</strong>)</li>
+<li>Increase or decrease the number of classes</li>
+</ol>
+<p>Which combination do you think communicates the terrain most
+effectively?</p>
+</div>
+</div>
+</div>
+<hr>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul>
+<li>DEMs should be reprojected to a metric coordinate system (such as
+UTM) before performing terrain analysis.</li>
+<li>Slope, aspect, and hillshade are derived layers that each reveal
+different characteristics of the terrain.</li>
+<li>Pseudocolor symbology with classified elevation ranges makes DEM
+data far more readable than the default grayscale.</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
 </section></section>
 </div>
     </main>
