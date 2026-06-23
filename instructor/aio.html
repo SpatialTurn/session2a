@@ -237,7 +237,19 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Using Markdown</a>
+        <a href="historical-imagery.html">1. Acquiring Raster Data using Imagery Databases</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush3">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading3">
+        <a href="satellite-elevation.html">2. Digital Elevation Models from SRTM</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -301,12 +313,12 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>All in One View</h1>
         
-<section id="aio-introduction"><p>Content from <a href="introduction.html">Using Markdown</a></p>
+<section id="aio-historical-imagery"><p>Content from <a href="historical-imagery.html">Acquiring Raster Data using Imagery Databases</a></p>
 <hr>
-<p>Last updated on 2025-07-11 |
+<p>Last updated on 2026-06-23 |
 
-        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 12 minutes</p>
+        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/historical-imagery.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 35 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -318,8 +330,9 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How do you write a lesson using Markdown and
-<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+<li>Where can I find scanned historical maps for use in GIS?</li>
+<li>What is CORONA satellite imagery and why is it valuable?</li>
+<li>How do I search for and download CORONA imagery?</li>
 </ul>
 </div>
 </div>
@@ -329,9 +342,11 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Explain how to use markdown with The Carpentries Workbench</li>
-<li>Demonstrate how to include pieces of code, figures, and nested
-challenge blocks</li>
+<li>Understand the difference between georeferenced and
+non-georeferenced raster data</li>
+<li>Download a scanned historical map from a public repository</li>
+<li>Search for and download CORONA imagery from the CAST website and
+USGS EarthExplorer</li>
 </ul>
 </div>
 </div>
@@ -341,129 +356,238 @@ challenge blocks</li>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <hr class="half-width">
-<p>This is a lesson created via The Carpentries Workbench. It is written
-in <a href="https://pandoc.org/MANUAL.html" class="external-link">Pandoc-flavored Markdown</a>
-for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R
-Markdown</a> for dynamic files that can render code into output. Please
-refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The
-Carpentries Workbench</a> for full documentation.</p>
-<p>What you need to know is that there are three sections required for a
-valid Carpentries lesson:</p>
-<ol style="list-style-type: decimal">
-<li>
-<code>questions</code> are displayed at the beginning of the episode
-to prime the learner for the content.</li>
-<li>
-<code>objectives</code> are the learning objectives for an episode
-displayed with the questions.</li>
-<li>
-<code>keypoints</code> are displayed at the end of the episode to
-reinforce the objectives.</li>
-</ol>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
-<div class="accordion-body">
-<p>Inline instructor notes can help inform instructors of timing
-challenges associated with the lessons. They appear in the “Instructor
-View”</p>
-</div>
-</div>
-</div>
-</div>
-<div id="challenge-1-can-you-do-it" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?</h3>
-<div class="callout-content">
-<p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">paste</span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"new"</span>, <span class="st">"lesson"</span>, <span class="st">"looks"</span>, <span class="st">"good"</span><span class="op">)</span></span></code></pre>
-</div>
-</div>
-</div>
-</div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Output </h4>
-</button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
-<div class="accordion-body">
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>[1] "This new lesson looks good"</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<span class="callout-header">Challenge</span>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout-inner">
-<h3 class="callout-title">Challenge 2: how do you nest solutions within
-challenge blocks?</h3>
-<div class="callout-content">
-
-</div>
-</div>
-</div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
-</button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
-<div class="accordion-body">
-<p>You can add a line with at least three colons and a
-<code>solution</code> tag.</p>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a>
+<p>Raster data — scanned maps, aerial photographs, satellite imagery,
+elevation models — forms the visual backbone of many GIS projects. Some
+raster files come <strong>georeferenced</strong> (positioned in
+real-world coordinates and ready to use), while others, like scanned
+paper maps, are <strong>non-georeferenced</strong> and must be aligned
+manually before they can overlay with other data layers.</p>
+<p>This session introduces two categories of historical raster data:
+scanned maps from online repositories and declassified CORONA spy
+satellite imagery.</p>
+<hr></section><section><h2 class="section-heading" id="downloading-scanned-historical-maps">Downloading Scanned Historical Maps<a class="anchor" aria-label="anchor" href="#downloading-scanned-historical-maps"></a>
 </h2>
 <hr class="half-width">
-<p>You can use standard markdown for static figures with the following
-syntax:</p>
-<p><code>![optional caption that appears below the figure](figure url){alt='alt text for accessibility purposes'}</code></p>
-<figure><img src="https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg" alt="Blue Carpentries hex person logo with no text." class="figure mx-auto d-block"><div class="figcaption">You belong in The Carpentries!</div>
-</figure><div id="callout1" class="callout">
+<p>Several public and academic websites host scanned paper maps that are
+free to download. These are typically non-georeferenced images — you
+will need to georeference them before using them in QGIS.</p>
+<div id="useful-map-repositories" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div class="callout-inner">
+<div id="useful-map-repositories" class="callout-inner">
+<h3 class="callout-title">Useful Map Repositories</h3>
 <div class="callout-content">
-<p>Callout sections can highlight information.</p>
-<p>They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present “asides”: content that is
-not central to the narrative of the lesson, e.g. by providing the answer
-to a commonly-asked question.</p>
+<ul>
+<li>
+<a href="https://legacy.lib.utexas.edu/maps/" class="external-link">Perry-Castañeda
+Library Map Collection</a> — University of Texas; thousands of scanned
+maps organized by region</li>
+<li>
+<a href="https://trove.nla.gov.au/" class="external-link">National Library of Australia
+Trove</a> — Australian maps, photographs, and archival material</li>
+<li>
+<a href="https://www.oldmapsonline.org/" class="external-link">Old Maps Online</a> —
+aggregates historical maps from libraries worldwide</li>
+</ul>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="math">Math<a class="anchor" aria-label="anchor" href="#math"></a>
+<div class="section level3">
+<h3 id="walkthrough-perry-castañeda-library">Walkthrough: Perry-Castañeda Library<a class="anchor" aria-label="anchor" href="#walkthrough-perry-casta%C3%B1eda-library"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://legacy.lib.utexas.edu/maps/" class="external-link">https://legacy.lib.utexas.edu/maps/</a>
+</li>
+<li>Scroll down and click <strong>Historical</strong>
+</li>
+<li>Browse by topic or region until you find a useful map — large
+military topographic series often include index maps to help locate a
+specific area</li>
+<li>Right-click the map image and select <strong>Save Image As</strong>,
+then save it to your project folder</li>
+</ol>
+<hr>
+</div>
+</section><section><h2 class="section-heading" id="corona-satellite-imagery">CORONA Satellite Imagery<a class="anchor" aria-label="anchor" href="#corona-satellite-imagery"></a>
 </h2>
 <hr class="half-width">
-<p>One of our episodes contains <span class="math inline">\(\LaTeX\)</span> equations when describing how to
-create dynamic reports with {knitr}, so we now use mathjax to describe
-this:</p>
-<p><code>$\alpha = \dfrac{1}{(1 - \beta)^2}$</code> becomes: <span class="math inline">\(\alpha = \dfrac{1}{(1 - \beta)^2}\)</span></p>
-<p>Cool, right?</p>
+<p>During the Cold War the United States operated a series of classified
+reconnaissance satellites. The <a href="https://www.usgs.gov/centers/eros/science/usgs-eros-archive-declassified-data-declassified-satellite-imagery-1" class="external-link">CORONA
+program (1960–1972)</a> produced over 860,000 black-and-white images —
+the first high-resolution (up to ~2 m) stereo photographs of the Earth’s
+surface. The imagery was declassified in 1995.</p>
+<p>The highest-resolution images come from the <strong>KH-4B</strong>
+series (1967–1972), captured on panoramic film strips each covering
+roughly 8.6 × 117 km. High-resolution scans are available from USGS
+EarthExplorer at no cost (at up to 3600 dpi), or for $30 per frame for
+scenes that have not yet been scanned.</p>
+<p>Since declassification, CORONA imagery has been widely used to study
+historical landscapes, identify archaeological sites, trace old land
+tenure boundaries, and document features lost to urbanization or
+agricultural expansion.</p>
+<hr>
+<div class="section level3">
+<h3 id="option-a-pre-georeferenced-imagery-from-cast">Option A: Pre-Georeferenced Imagery from CAST<a class="anchor" aria-label="anchor" href="#option-a-pre-georeferenced-imagery-from-cast"></a>
+</h3>
+<p>The <a href="https://corona.cast.uark.edu/" class="external-link">CORONA Atlas at the
+University of Arkansas CAST</a> provides a subset of CORONA scenes that
+have already been georeferenced — ready to use directly in QGIS.</p>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://corona.cast.uark.edu/" class="external-link">https://corona.cast.uark.edu/</a>
+and click <strong>Explore Atlas</strong>
+</li>
+<li>Red rectangles on the map show available missions — zoom in to your
+area of interest</li>
+<li>Use the slider tool at the bottom of the screen to compare CORONA
+and modern imagery side by side</li>
+<li>Adjust transparency with the slider next to <strong>Corona
+Imagery</strong> to see how features have changed</li>
+<li>Expand the <strong>Corona Imagery</strong> layer with the
+<strong>(+)</strong> button to see individual images</li>
+</ol>
+<div id="tip" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="tip" class="callout-inner">
+<h3 class="callout-title">Tip</h3>
+<div class="callout-content">
+<p>As you zoom in, fewer missions will be listed — this is normal, since
+each scene covers a specific footprint.</p>
+</div>
+</div>
+</div>
+<ol start="6" style="list-style-type: decimal">
+<li>Toggle images on and off to find the best one, then click the blue
+download button <strong>(V)</strong> next to it</li>
+<li>Click <strong>Download GeoTiff</strong> — these are large files, so
+the download may take a few minutes</li>
+<li>Move the downloaded file to a dedicated folder (e.g.,
+<code>CORONA/</code>) in your GIS project directory</li>
+</ol>
+<div class="section level4">
+<h4 id="loading-the-image-in-qgis">Loading the image in QGIS<a class="anchor" aria-label="anchor" href="#loading-the-image-in-qgis"></a>
+</h4>
+<ol style="list-style-type: decimal">
+<li>Open QGIS and click the <strong>Open Data Source Manager</strong>
+button on the toolbar</li>
+<li>Select the <strong>Raster</strong> tab, click
+<strong>Browse</strong>, and navigate to your CORONA GeoTIFF</li>
+<li>Click <strong>Open → Add → Close</strong>
+</li>
+</ol>
+<div id="exercise-1-download-from-cast" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-1-download-from-cast" class="callout-inner">
+<h3 class="callout-title">Exercise 1: Download from CAST</h3>
+<div class="callout-content">
+<p>Download a CORONA image of your area of interest (or a famous
+landmark) from the CAST website. Load it into QGIS and explore the
+scene.</p>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="section level3">
+<h3 id="option-b-full-archive-from-usgs-earthexplorer">Option B: Full Archive from USGS EarthExplorer<a class="anchor" aria-label="anchor" href="#option-b-full-archive-from-usgs-earthexplorer"></a>
+</h3>
+<p>The CAST atlas covers a limited area. For global coverage, use the
+complete CORONA archive on <a href="https://earthexplorer.usgs.gov/" class="external-link">USGS EarthExplorer</a>.</p>
+<div id="before-you-begin" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="before-you-begin" class="callout-inner">
+<h3 class="callout-title">Before You Begin</h3>
+<div class="callout-content">
+<p>Make sure you are logged in to your EarthExplorer account. If you do
+not have one, create a free account at <a href="https://earthexplorer.usgs.gov/" class="external-link">https://earthexplorer.usgs.gov/</a>.</p>
+</div>
+</div>
+</div>
+<div class="section level4">
+<h4 id="step-1-define-your-search-area">Step 1: Define Your Search Area<a class="anchor" aria-label="anchor" href="#step-1-define-your-search-area"></a>
+</h4>
+<ul>
+<li>In the map window, navigate to your area of interest</li>
+<li>Click corners on the map to draw a search polygon, or zoom in and
+click <strong>Use Map</strong> in the Search Criteria pane</li>
+<li>Your search area will appear as a semi-transparent red polygon</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-2-select-the-dataset">Step 2: Select the Dataset<a class="anchor" aria-label="anchor" href="#step-2-select-the-dataset"></a>
+</h4>
+<ul>
+<li>Click the <strong>Data Sets</strong> tab</li>
+<li>Expand <strong>Declassified Data</strong> → select <strong>Declass 1
+(1996)</strong>
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-3-filter-for-high-quality-imagery">Step 3: Filter for High-Quality Imagery<a class="anchor" aria-label="anchor" href="#step-3-filter-for-high-quality-imagery"></a>
+</h4>
+<ul>
+<li>Click the <strong>Additional Criteria</strong> tab</li>
+<li>Expand <strong>Camera Resolution</strong> and select <strong>Stereo
+High</strong> (this limits results to the best KH-4B imagery)</li>
+<li>Optionally, expand <strong>Download Availability</strong> and select
+<strong>Yes</strong> to show only pre-scanned images (leave blank to see
+all coverage, including frames available for $30)</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-4-review-and-download">Step 4: Review and Download<a class="anchor" aria-label="anchor" href="#step-4-review-and-download"></a>
+</h4>
+<ul>
+<li>Click <strong>Results</strong> to see available scenes</li>
+<li>Use the <strong>Footprint</strong> and <strong>Image
+Overlay</strong> icons to preview coverage on the map</li>
+<li>Click <strong>Show Metadata and Browse</strong> (the paper icon) to
+check cloud cover and image clarity</li>
+<li>When you have chosen a scene, click the <strong>Download
+Options</strong> button (disk icon with green arrow) and select
+<strong>Download</strong>
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-5-extract-the-files">Step 5: Extract the Files<a class="anchor" aria-label="anchor" href="#step-5-extract-the-files"></a>
+</h4>
+<ul>
+<li>Move the downloaded <code>.tgz</code> file to your project
+folder</li>
+<li>Extract with <strong>7-Zip → Extract Here</strong> to get a
+<code>.tar</code> file</li>
+<li>Extract the <code>.tar</code> file again — this produces four
+<code>.tif</code> files (the panoramic strip split into segments labeled
+a, b, c, and d)</li>
+</ul>
+<div id="note" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="note" class="callout-inner">
+<h3 class="callout-title">Note</h3>
+<div class="callout-content">
+<p>Raw CORONA imagery from EarthExplorer is <strong>not
+georeferenced</strong>. You will need to georeference it in QGIS before
+it can be overlaid with other spatial data.</p>
+</div>
+</div>
+</div>
+<hr>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -472,14 +596,12 @@ this:</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>Use <code>.md</code> files for episodes when you want static
-content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
+<li>Scanned historical maps are widely available online but usually
+require georeferencing before use in a GIS.</li>
+<li>CORONA imagery (1960–1972) provides high-resolution historical views
+of the Earth’s surface and is free to download.</li>
+<li>The CAST website offers pre-georeferenced CORONA scenes for quick
+use; EarthExplorer hosts the complete global archive.</li>
 </ul>
 </div>
 </div>
@@ -488,6 +610,280 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
+</div>
+</section></section><section id="aio-satellite-elevation"><p>Content from <a href="satellite-elevation.html">Digital Elevation Models from SRTM</a></p>
+<hr>
+<p>Last updated on 2026-06-23 |
+
+        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/satellite-elevation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 35 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>What is Sentinel-2 imagery and how do I download it?</li>
+<li>What is a digital elevation model (DEM)?</li>
+<li>How do I download SRTM elevation data from EarthExplorer?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Search for and download Sentinel-2 multispectral imagery from the
+Copernicus Browser</li>
+<li>Understand what SRTM DEM data represents</li>
+<li>Download SRTM elevation tiles from USGS EarthExplorer</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="sentinel-2-multispectral-imagery">Sentinel-2 Multispectral Imagery<a class="anchor" aria-label="anchor" href="#sentinel-2-multispectral-imagery"></a>
+</h2>
+<hr class="half-width">
+<p>The <a href="https://www.copernicus.eu/en" class="external-link">Sentinel-2 satellite
+program</a>, launched in 2015 by the European Space Agency (ESA) as part
+of the EU’s Copernicus Earth observation programme, provides free,
+high-resolution multispectral imagery across 13 spectral bands. Two
+satellites (2A and 2B) image the Earth’s entire land surface
+approximately every 5 days at a resolution of 10 m in the visible bands
+— a significant improvement over the 15 m resolution of earlier free
+Landsat data.</p>
+<p>Sentinel-2 imagery is especially useful for land cover
+classification, vegetation health monitoring (NDVI), environmental
+change detection, and heritage landscape analysis. Its combination of
+high spectral resolution (many band combinations), high temporal
+resolution (frequent revisits), and open access makes it one of the most
+valuable datasets for social science research involving
+human-environment interactions.</p>
+<hr>
+<div class="section level3">
+<h3 id="navigating-the-copernicus-browser">Navigating the Copernicus Browser<a class="anchor" aria-label="anchor" href="#navigating-the-copernicus-browser"></a>
+</h3>
+<div id="before-you-begin" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="before-you-begin" class="callout-inner">
+<h3 class="callout-title">Before You Begin</h3>
+<div class="callout-content">
+<p>Make sure you have a Copernicus Data Space account. If you do not
+have one, register for free at <a href="https://identity.dataspace.copernicus.eu/" class="external-link">https://identity.dataspace.copernicus.eu/</a>.</p>
+</div>
+</div>
+</div>
+<ol style="list-style-type: decimal">
+<li>Log in and navigate to the <a href="https://browser.dataspace.copernicus.eu/" class="external-link">Copernicus
+Browser</a>
+</li>
+<li>Use the map pane to zoom to your area of interest</li>
+</ol>
+<hr>
+</div>
+<div class="section level3">
+<h3 id="searching-for-imagery">Searching for Imagery<a class="anchor" aria-label="anchor" href="#searching-for-imagery"></a>
+</h3>
+<p>With the <strong>Visualize</strong> tab active in the left pane, set
+your search criteria from top to bottom:</p>
+<ul>
+<li>
+<strong>Date or date range</strong> — select a specific date or
+click “show latest data.” Days with available imagery are highlighted in
+blue.</li>
+<li>
+<strong>Cloud cover</strong> — use the slider to set a maximum
+(e.g., 10%)</li>
+<li>
+<strong>Satellite</strong> — select <strong>Sentinel-2</strong>
+</li>
+<li>
+<strong>Band combination</strong> — choose from preset layers such
+as True Color, NDVI, or Land Cover Classes</li>
+</ul>
+<p>Once your criteria are set, click <strong>Find products for current
+view</strong>. This opens the <strong>Search</strong> tab and lists
+available scenes. Each scene corresponds to a green square on the map
+that highlights when you hover over the listing.</p>
+</div>
+<div class="section level3">
+<h3 id="previewing-scenes">Previewing Scenes<a class="anchor" aria-label="anchor" href="#previewing-scenes"></a>
+</h3>
+<ul>
+<li>Click the <strong>i button</strong> on a listed scene (or click its
+green square on the map) to view detailed metadata</li>
+<li>Click the <strong>crosshairs icon</strong> to zoom to a scene on the
+map</li>
+<li>Click <strong>Visualize</strong> below a scene’s thumbnail to
+explore different band combinations interactively</li>
+<li>To adjust your search, click <strong>Go to search</strong> at the
+top of the pane, update your filters, and click <strong>Search</strong>
+again</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="downloading">Downloading<a class="anchor" aria-label="anchor" href="#downloading"></a>
+</h3>
+<ul>
+<li>Click the <strong>Download</strong> button on the right side of a
+scene listing</li>
+<li>The file size is shown above the button — downloads may take time
+depending on your connection</li>
+<li>The downloaded file is a <code>.SAFE.ZIP</code> archive — extract it
+and import the contents into QGIS for visualization</li>
+</ul>
+<div id="exercise-1-download-sentinel-2-imagery" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-1-download-sentinel-2-imagery" class="callout-inner">
+<h3 class="callout-title">Exercise 1: Download Sentinel-2 Imagery</h3>
+<div class="callout-content">
+<ol style="list-style-type: decimal">
+<li>Log in to the Copernicus Browser</li>
+<li>Navigate to an area of interest and search for a recent,
+low-cloud-cover Sentinel-2 scene</li>
+<li>Preview it using the True Color and NDVI band combinations</li>
+<li>Download the scene</li>
+</ol>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</section><section><h2 class="section-heading" id="srtm-digital-elevation-models">SRTM Digital Elevation Models<a class="anchor" aria-label="anchor" href="#srtm-digital-elevation-models"></a>
+</h2>
+<hr class="half-width">
+<p>The <a href="https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1" class="external-link">Shuttle
+Radar Topography Mission (SRTM)</a> was a joint international project in
+2000 that used radar data collected from the Space Shuttle
+<em>Endeavour</em> to produce one of the most accurate near-global
+digital elevation datasets of the Earth’s land surface.</p>
+<p>The most recent release, <strong>SRTM 1 Arc-Second Global (V3,
+2014)</strong>, has a ground resolution of approximately 30 m per pixel
+and an absolute vertical accuracy of about 16 m. The dataset is divided
+into individual 1° × 1° tiles available for free download as GeoTIFF
+files.</p>
+<p>When first imported into QGIS, raw DEM files appear as grayscale
+images — each pixel’s shade represents the elevation of that 30 × 30 m
+area. From this raw data you can generate hillshade models, slope and
+aspect maps, elevation classes, and contour lines. We will practice
+several of these techniques in <strong>Session 3a</strong>.</p>
+<hr>
+<div class="section level3">
+<h3 id="downloading-srtm-data-from-earthexplorer">Downloading SRTM Data from EarthExplorer<a class="anchor" aria-label="anchor" href="#downloading-srtm-data-from-earthexplorer"></a>
+</h3>
+<p>The download process is similar to the CORONA workflow from the
+previous page, using the same EarthExplorer interface.</p>
+<div id="before-you-begin-1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="before-you-begin-1" class="callout-inner">
+<h3 class="callout-title">Before You Begin</h3>
+<div class="callout-content">
+<p>Make sure you are logged in to your <a href="https://earthexplorer.usgs.gov/" class="external-link">USGS EarthExplorer</a>
+account.</p>
+</div>
+</div>
+</div>
+<div class="section level4">
+<h4 id="step-1-define-your-search-area">Step 1: Define Your Search Area<a class="anchor" aria-label="anchor" href="#step-1-define-your-search-area"></a>
+</h4>
+<ul>
+<li>Navigate to your area of interest in the map window</li>
+<li>Draw a search polygon or zoom in and click <strong>Use
+Map</strong>
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-2-select-the-dataset">Step 2: Select the Dataset<a class="anchor" aria-label="anchor" href="#step-2-select-the-dataset"></a>
+</h4>
+<ul>
+<li>Click the <strong>Data Sets</strong> tab</li>
+<li>Expand <strong>Digital Elevation</strong> → expand
+<strong>SRTM</strong>
+</li>
+<li>Select <strong>SRTM 1 Arc-Second Global</strong>
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-3-review-and-download">Step 3: Review and Download<a class="anchor" aria-label="anchor" href="#step-3-review-and-download"></a>
+</h4>
+<ul>
+<li>Click <strong>Results</strong> to see the available DEM tiles
+covering your area</li>
+<li>Use the <strong>Footprint</strong> and <strong>Image
+Overlay</strong> icons to preview tile coverage</li>
+<li>Click <strong>Download Options</strong> (disk icon with green arrow)
+and download the <strong>GeoTIFF</strong> format</li>
+<li>Save the file to your project folder</li>
+</ul>
+<p>The downloaded GeoTIFF is already georeferenced and ready to load
+directly into QGIS.</p>
+<div id="exercise-2-download-an-srtm-tile" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-2-download-an-srtm-tile" class="callout-inner">
+<h3 class="callout-title">Exercise 2: Download an SRTM Tile</h3>
+<div class="callout-content">
+<ol style="list-style-type: decimal">
+<li>Log in to EarthExplorer and navigate to the same area you used for
+Sentinel-2</li>
+<li>Search for and download an SRTM 1 Arc-Second tile covering that
+area</li>
+<li>Load the GeoTIFF into QGIS — you should see a grayscale elevation
+image</li>
+</ol>
+</div>
+</div>
+</div>
+<hr>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul>
+<li>Sentinel-2 provides free, high-resolution multispectral imagery with
+a ~5-day revisit cycle, useful for land cover and vegetation
+analysis.</li>
+<li>SRTM DEM tiles provide 30 m resolution elevation data that can be
+used to generate hillshade, slope, contour, and other terrain
+visualizations.</li>
+<li>Both Sentinel-2 and SRTM data are georeferenced and can be loaded
+directly into QGIS.</li>
+</ul>
+</div>
+</div>
+</div>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</div>
+</div>
 </section></section>
 </div>
     </main>
@@ -537,9 +933,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/instructor/aio.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/instructor/aio.html",
-  "dateCreated": "2026-06-15",
-  "dateModified": "2026-06-16",
-  "datePublished": "2026-06-16"
+  "dateCreated": "2026-06-23",
+  "dateModified": "2026-06-23",
+  "datePublished": "2026-06-23"
 }
 
   </script><script>
