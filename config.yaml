@@ -69,6 +69,7 @@ contact: 'team@carpentries.org' # FIXME
 episodes: 
 - historical-imagery.md
 - satellite-elevation.md
+- dem-analysis.md
 
 # Information for Learners
 learners: 
