@@ -1,14 +1,15 @@
 ---
 title: "Acquiring Raster Data using Imagery Databases"
-teaching: 25
-exercises: 10
+teaching: 40
+exercises: 15
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
 
 - Where can I find scanned historical maps for use in GIS?
-- What is CORONA satellite imagery and why is it valuable?
-- How do I search for and download CORONA imagery?
+- What is CORONA satellite imagery and how do I download it?
+- How do I acquire Sentinel-2 multispectral imagery?
+- What is a digital elevation model (DEM) and where do I get one?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -17,6 +18,8 @@ exercises: 10
 - Understand the difference between georeferenced and non-georeferenced raster data
 - Download a scanned historical map from a public repository
 - Search for and download CORONA imagery from the CAST website and USGS EarthExplorer
+- Download Sentinel-2 imagery from the Copernicus Browser
+- Download SRTM elevation data from USGS EarthExplorer
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -24,13 +27,13 @@ exercises: 10
 
 Raster data — scanned maps, aerial photographs, satellite imagery, elevation models — forms the visual backbone of many GIS projects. Some raster files come **georeferenced** (positioned in real-world coordinates and ready to use), while others, like scanned paper maps, are **non-georeferenced** and must be aligned manually before they can overlay with other data layers.
 
-This session introduces two categories of historical raster data: scanned maps from online repositories and declassified CORONA spy satellite imagery.
+This session covers four types of raster data, moving from historical sources to modern satellite products.
 
 ---
 
-## Downloading Scanned Historical Maps
+## 1. Scanned Historical Maps
 
-Several public and academic websites host scanned paper maps that are free to download. These are typically non-georeferenced images — you will need to georeference them before using them in QGIS.
+Several public and academic websites host scanned paper maps that are free to download. These are typically non-georeferenced — you will need to georeference them before using them in QGIS.
 
 ::::::::::::::::::::::::::::::::::::: callout
 
@@ -51,15 +54,13 @@ Several public and academic websites host scanned paper maps that are free to do
 
 ---
 
-## CORONA Satellite Imagery
+## 2. CORONA Satellite Imagery
 
 During the Cold War the United States operated a series of classified reconnaissance satellites. The [CORONA program (1960–1972)](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-declassified-data-declassified-satellite-imagery-1) produced over 860,000 black-and-white images — the first high-resolution (up to ~2 m) stereo photographs of the Earth's surface. The imagery was declassified in 1995.
 
 The highest-resolution images come from the **KH-4B** series (1967–1972), captured on panoramic film strips each covering roughly 8.6 × 117 km. High-resolution scans are available from USGS EarthExplorer at no cost (at up to 3600 dpi), or for $30 per frame for scenes that have not yet been scanned.
 
 Since declassification, CORONA imagery has been widely used to study historical landscapes, identify archaeological sites, trace old land tenure boundaries, and document features lost to urbanization or agricultural expansion.
-
----
 
 ### Option A: Pre-Georeferenced Imagery from CAST
 
@@ -95,8 +96,6 @@ As you zoom in, fewer missions will be listed — this is normal, since each sce
 Download a CORONA image of your area of interest (or a famous landmark) from the CAST website. Load it into QGIS and explore the scene.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
----
 
 ### Option B: Full Archive from USGS EarthExplorer
 
@@ -148,10 +147,95 @@ Raw CORONA imagery from EarthExplorer is **not georeferenced**. You will need to
 
 ---
 
+## 3. Sentinel-2 Multispectral Imagery
+
+The [Sentinel-2 satellite program](https://www.copernicus.eu/en), launched in 2015 by the European Space Agency as part of the EU's Copernicus programme, provides free, high-resolution multispectral imagery across 13 spectral bands. Two satellites (2A and 2B) image the entire land surface approximately every 5 days at 10 m resolution in the visible bands.
+
+Sentinel-2 imagery is especially useful for land cover classification, vegetation health monitoring (NDVI), and environmental change detection.
+
+### Searching and Downloading from the Copernicus Browser
+
+::::::::::::::::::::::::::::::::::::: callout
+
+### Before You Begin
+Make sure you have a Copernicus Data Space account. Register for free at [https://identity.dataspace.copernicus.eu/](https://identity.dataspace.copernicus.eu/).
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+1. Log in and navigate to the [Copernicus Browser](https://browser.dataspace.copernicus.eu/)
+2. Zoom to your area of interest in the map pane
+
+With the **Visualize** tab active, set your search criteria:
+
+- **Date or date range** — select a date or click "show latest data"
+- **Cloud cover** — use the slider to set a maximum (e.g., 10%)
+- **Satellite** — select **Sentinel-2**
+- **Band combination** — choose a preset such as True Color, NDVI, or Land Cover Classes
+
+Click **Find products for current view** to open the **Search** tab with matching scenes. Each scene corresponds to a green square on the map.
+
+#### Previewing and Downloading
+
+- Click the **i button** on a scene to view metadata, or the **crosshairs icon** to zoom to it
+- Click **Visualize** below a thumbnail to explore band combinations interactively
+- To download, click the **Download** button on the right side of a listing — the file is a `.SAFE.ZIP` archive that can be extracted and imported into QGIS
+
+:::::::::::::::::::::::::::::::::::: challenge
+
+### Exercise 2: Download Sentinel-2 Imagery
+
+1. Search for a recent, low-cloud-cover Sentinel-2 scene over your area of interest
+2. Preview it using the True Color and NDVI band combinations
+3. Download the scene
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+---
+
+## 4. SRTM Digital Elevation Models
+
+The [Shuttle Radar Topography Mission (SRTM)](https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1) was a joint international project in 2000 that used radar from the Space Shuttle *Endeavour* to produce one of the most accurate near-global elevation datasets. The most recent release, **SRTM 1 Arc-Second Global (V3, 2014)**, has ~30 m resolution and is divided into 1° × 1° tiles available as free GeoTIFF downloads.
+
+When loaded into QGIS, raw DEM files appear as grayscale images where each pixel's shade represents the elevation of that 30 × 30 m area. From this data you can generate hillshade, slope, aspect, and contour layers — we will do exactly that in the next session.
+
+### Downloading from EarthExplorer
+
+The process follows the same EarthExplorer interface used for CORONA above.
+
+#### Step 1: Define Your Search Area
+
+- Navigate to your area of interest and draw a search polygon or click **Use Map**
+
+#### Step 2: Select the Dataset
+
+- Click the **Data Sets** tab
+- Expand **Digital Elevation** → **SRTM** → select **SRTM 1 Arc-Second Global**
+
+#### Step 3: Download
+
+- Click **Results** to see available tiles
+- Use the **Footprint** icon to preview coverage
+- Click **Download Options** and download the **GeoTIFF** format
+- Save the file to your project folder
+
+The downloaded GeoTIFF is already georeferenced and ready to load into QGIS.
+
+:::::::::::::::::::::::::::::::::::: challenge
+
+### Exercise 3: Download an SRTM Tile
+
+1. Using EarthExplorer, download an SRTM tile covering the same area you used for Sentinel-2
+2. Load the GeoTIFF into QGIS — you should see a grayscale elevation image
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
+---
+
 :::::::::::::::::::::::::::::::::::::: keypoints
 
 - Scanned historical maps are widely available online but usually require georeferencing before use in a GIS.
-- CORONA imagery (1960–1972) provides high-resolution historical views of the Earth's surface and is free to download.
-- The CAST website offers pre-georeferenced CORONA scenes for quick use; EarthExplorer hosts the complete global archive.
+- CORONA imagery (1960–1972) provides high-resolution historical views and is free from CAST (georeferenced) or EarthExplorer (raw).
+- Sentinel-2 provides free, 10 m resolution multispectral imagery with a ~5-day revisit cycle.
+- SRTM DEM tiles provide 30 m elevation data that can be used for terrain analysis in the next session.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

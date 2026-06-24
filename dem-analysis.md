@@ -65,7 +65,7 @@ A new layer called **Reprojected** will appear in the Layers panel.
 ::::::::::::::::::::::::::::::::::::: callout
 
 ### Why UTM Zone 16N?
-This workshop uses study areas in Indiana, which falls within UTM zone 16N. If your area of interest is elsewhere, choose the appropriate UTM zone for your location.
+This workshop uses study areas in Indiana, which falls within UTM zone 16N. If your area of interest is elsewhere, choose the appropriate UTM zone for your location. Check out this [website](https://epsg.io/) to find out the correct projection for youre region!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
