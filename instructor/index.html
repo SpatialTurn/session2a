@@ -200,7 +200,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="historical-imagery.html">1. Acquiring Raster Data using Imagery Databases</a>
+        <a href="acquiring-raster-data.html">1. Acquiring Raster Data using Imagery Databases</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -209,16 +209,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="satellite-elevation.html">2. Digital Elevation Models from SRTM</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush4">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading4">
-        <a href="dem-analysis.html">3. DEM Analysis and Visualization in QGIS</a>
+        <a href="dem-analysis.html">2. DEM Analysis and Visualization in QGIS</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -266,11 +257,11 @@
         <!-- START: inst/pkgdown/templates/content-syllabus.html -->
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/historical-imagery.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/acquiring-raster-data.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/historical-imagery.html" rel="next">Next: Acquiring Raster... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/acquiring-raster-data.html" rel="next">Next: Acquiring Raster... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
@@ -288,31 +279,20 @@ any links that you are not going to use.
 <span class="visually-hidden">Duration: </span>00h 00m
 </td>
 <td>
- 1. <a href="historical-imagery.html">Acquiring Raster Data using
+ 1. <a href="acquiring-raster-data.html">Acquiring Raster Data using
 Imagery Databases</a>
 </td>
 <td>
 Where can I find scanned historical maps for use in GIS?<br>What is
-CORONA satellite imagery and why is it valuable?<br>How do I search for
-and download CORONA imagery?
+CORONA satellite imagery and how do I download it?<br>How do I acquire
+Sentinel-2 multispectral imagery?<br>What is a digital elevation model
+(DEM) and where do I get one?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>00h 35m
+<span class="visually-hidden">Duration: </span>00h 55m
 </td>
 <td>
- 2. <a href="satellite-elevation.html">Digital Elevation Models from
-SRTM</a>
-</td>
-<td>
-What is Sentinel-2 imagery and how do I download it?<br>What is a
-digital elevation model (DEM)?<br>How do I download SRTM elevation data
-from EarthExplorer?
-</td>
-</tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 10m
-</td>
-<td>
- 3. <a href="dem-analysis.html">DEM Analysis and Visualization in
+ 2. <a href="dem-analysis.html">DEM Analysis and Visualization in
 QGIS</a>
 </td>
 <td>
@@ -321,7 +301,7 @@ and hillshade tell us about a landscape?<br>How do I visualize
 elevation classes using symbology?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 50m
+<span class="visually-hidden">Duration: </span>01h 35m
 </td>
 <td>
 Finish
@@ -334,19 +314,58 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>placeholder</p>
-<!--
+      </section><section id="setup"><section><h2 class="section-heading" id="what-you-need-for-this-session">What You Need for This Session<a class="anchor" aria-label="anchor" href="#what-you-need-for-this-session"></a></h2>
+<hr class="half-width"><p>Before starting Session 2a, make sure you have the following ready.
+If you completed the main workshop setup page, you are already set.</p>
+<div class="section level3">
+<h3 id="accounts">Accounts<a class="anchor" aria-label="anchor" href="#accounts"></a></h3>
+<ul><li>
+<strong>USGS EarthExplorer</strong> — for downloading CORONA imagery
+and SRTM elevation data → <a href="https://ers.cr.usgs.gov/register" class="external-link">Register here</a>
+</li>
+<li>
+<strong>Copernicus Data Space</strong> — for downloading Sentinel-2
+satellite imagery → <a href="https://dataspace.copernicus.eu" class="external-link">Register
+here</a>
+</li>
+</ul><p>Both accounts are free. Email verification can take a few minutes, so
+please register ahead of time.</p>
+</div>
+<div class="section level3">
+<h3 id="software">Software<a class="anchor" aria-label="anchor" href="#software"></a></h3>
+<ul><li>
+<strong>QGIS Desktop (LTR)</strong> — download and install from <a href="https://qgis.org/download/" class="external-link">https://qgis.org/download/</a>. Open
+QGIS once to confirm it launches.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="recommended">Recommended<a class="anchor" aria-label="anchor" href="#recommended"></a></h3>
+<ul><li>
+<strong>7-Zip</strong> (Windows) or a similar archive tool — needed
+to extract CORONA <code>.tgz</code> downloads. → <a href="https://www.7-zip.org/" class="external-link">Download here</a>
+</li>
+<li>A dedicated <strong>project folder</strong> on your computer (e.g.,
+<code>Desktop/GIS_Workshop/</code>) to keep downloaded data
+organized.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="checklist">Checklist<a class="anchor" aria-label="anchor" href="#checklist"></a></h3>
+<ul class="task-list"><li><label><input type="checkbox">USGS EarthExplorer account created
+and verified</label></li>
+<li><label><input type="checkbox">Copernicus Data Space account
+created and verified</label></li>
+<li><label><input type="checkbox">QGIS installed and opens
+successfully</label></li>
+<li><label><input type="checkbox">Project folder created</label></li>
+</ul><!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- -->
-
-
-      </section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
-        <a class="chapter-link float-end" href="../instructor/historical-imagery.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+ --></div>
+</section></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
+        <a class="chapter-link float-end" href="../instructor/acquiring-raster-data.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
-        <a class="chapter-link float-end" href="../instructor/historical-imagery.html" rel="next">Next: Acquiring Raster... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="../instructor/acquiring-raster-data.html" rel="next">Next: Acquiring Raster... <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
     </nav></div>
 <!-- END  : inst/pkgdown/templates/content-syllabus.html -->
@@ -391,9 +410,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/instructor/index.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/instructor/index.html",
-  "dateCreated": "2026-06-23",
-  "dateModified": "2026-06-23",
-  "datePublished": "2026-06-23"
+  "dateCreated": "2026-06-24",
+  "dateModified": "2026-06-24",
+  "datePublished": "2026-06-24"
 }
 
   </script><script>

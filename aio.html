@@ -236,7 +236,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="historical-imagery.html">1. Acquiring Raster Data using Imagery Databases</a>
+        <a href="acquiring-raster-data.html">1. Acquiring Raster Data using Imagery Databases</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -248,19 +248,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="satellite-elevation.html">2. Digital Elevation Models from SRTM</a>
-    </div>
-<!--/div.accordion-header-->
-
-  </div>
-<!--/div.accordion-item-->
-</div>
-<!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush4">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading4">
-        <a href="dem-analysis.html">3. DEM Analysis and Visualization in QGIS</a>
+        <a href="dem-analysis.html">2. DEM Analysis and Visualization in QGIS</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -323,11 +311,11 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>All in One View</h1>
         
-<section id="aio-historical-imagery"><p>Content from <a href="historical-imagery.html">Acquiring Raster Data using Imagery Databases</a></p>
+<section id="aio-acquiring-raster-data"><p>Content from <a href="acquiring-raster-data.html">Acquiring Raster Data using Imagery Databases</a></p>
 <hr>
-<p>Last updated on 2026-06-23 |
+<p>Last updated on 2026-06-24 |
 
-        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/historical-imagery.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/acquiring-raster-data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -340,8 +328,9 @@
 <h3 class="card-title">Questions</h3>
 <ul>
 <li>Where can I find scanned historical maps for use in GIS?</li>
-<li>What is CORONA satellite imagery and why is it valuable?</li>
-<li>How do I search for and download CORONA imagery?</li>
+<li>What is CORONA satellite imagery and how do I download it?</li>
+<li>How do I acquire Sentinel-2 multispectral imagery?</li>
+<li>What is a digital elevation model (DEM) and where do I get one?</li>
 </ul>
 </div>
 </div>
@@ -356,6 +345,8 @@ non-georeferenced raster data</li>
 <li>Download a scanned historical map from a public repository</li>
 <li>Search for and download CORONA imagery from the CAST website and
 USGS EarthExplorer</li>
+<li>Download Sentinel-2 imagery from the Copernicus Browser</li>
+<li>Download SRTM elevation data from USGS EarthExplorer</li>
 </ul>
 </div>
 </div>
@@ -371,15 +362,14 @@ raster files come <strong>georeferenced</strong> (positioned in
 real-world coordinates and ready to use), while others, like scanned
 paper maps, are <strong>non-georeferenced</strong> and must be aligned
 manually before they can overlay with other data layers.</p>
-<p>This session introduces two categories of historical raster data:
-scanned maps from online repositories and declassified CORONA spy
-satellite imagery.</p>
-<hr></section><section><h2 class="section-heading" id="downloading-scanned-historical-maps">Downloading Scanned Historical Maps<a class="anchor" aria-label="anchor" href="#downloading-scanned-historical-maps"></a>
+<p>This session covers four types of raster data, moving from historical
+sources to modern satellite products.</p>
+<hr></section><section><h2 class="section-heading" id="scanned-historical-maps">1. Scanned Historical Maps<a class="anchor" aria-label="anchor" href="#scanned-historical-maps"></a>
 </h2>
 <hr class="half-width">
 <p>Several public and academic websites host scanned paper maps that are
-free to download. These are typically non-georeferenced images — you
-will need to georeference them before using them in QGIS.</p>
+free to download. These are typically non-georeferenced — you will need
+to georeference them before using them in QGIS.</p>
 <div id="useful-map-repositories" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -419,7 +409,7 @@ then save it to your project folder</li>
 </ol>
 <hr>
 </div>
-</section><section><h2 class="section-heading" id="corona-satellite-imagery">CORONA Satellite Imagery<a class="anchor" aria-label="anchor" href="#corona-satellite-imagery"></a>
+</section><section><h2 class="section-heading" id="corona-satellite-imagery">2. CORONA Satellite Imagery<a class="anchor" aria-label="anchor" href="#corona-satellite-imagery"></a>
 </h2>
 <hr class="half-width">
 <p>During the Cold War the United States operated a series of classified
@@ -436,7 +426,6 @@ scenes that have not yet been scanned.</p>
 historical landscapes, identify archaeological sites, trace old land
 tenure boundaries, and document features lost to urbanization or
 agricultural expansion.</p>
-<hr>
 <div class="section level3">
 <h3 id="option-a-pre-georeferenced-imagery-from-cast">Option A: Pre-Georeferenced Imagery from CAST<a class="anchor" aria-label="anchor" href="#option-a-pre-georeferenced-imagery-from-cast"></a>
 </h3>
@@ -502,7 +491,6 @@ scene.</p>
 </div>
 </div>
 </div>
-<hr>
 </div>
 </div>
 <div class="section level3">
@@ -597,206 +585,23 @@ it can be overlaid with other spatial data.</p>
 </div>
 </div>
 <hr>
-<div id="keypoints1" class="callout keypoints">
-<div class="callout-square">
-<i class="callout-icon" data-feather="key"></i>
-</div>
-<span class="callout-header">Key Points</span>
-<div class="callout-inner">
-<div class="callout-content">
-<ul>
-<li>Scanned historical maps are widely available online but usually
-require georeferencing before use in a GIS.</li>
-<li>CORONA imagery (1960–1972) provides high-resolution historical views
-of the Earth’s surface and is free to download.</li>
-<li>The CAST website offers pre-georeferenced CORONA scenes for quick
-use; EarthExplorer hosts the complete global archive.</li>
-</ul>
 </div>
 </div>
-</div>
-<!--
-Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use.
- -->
-</div>
-</div>
-</section></section><section id="aio-satellite-elevation"><p>Content from <a href="satellite-elevation.html">Digital Elevation Models from SRTM</a></p>
-<hr>
-<p>Last updated on 2026-06-23 |
-
-        <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/satellite-elevation.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<div class="text-end">
-          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
-        </div>
-<div class="overview card">
-<h2 class="card-header">Overview</h2>
-<div class="row g-0">
-<div class="col-md-4">
-<div class="card-body">
-<div class="inner">
-<h3 class="card-title">Questions</h3>
-<ul>
-<li>What is Sentinel-2 imagery and how do I download it?</li>
-<li>What is a digital elevation model (DEM)?</li>
-<li>How do I download SRTM elevation data from EarthExplorer?</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="col-md-8">
-<div class="card-body">
-<div class="inner bordered">
-<h3 class="card-title">Objectives</h3>
-<ul>
-<li>Search for and download Sentinel-2 multispectral imagery from the
-Copernicus Browser</li>
-<li>Understand what SRTM DEM data represents</li>
-<li>Download SRTM elevation tiles from USGS EarthExplorer</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-<section><h2 class="section-heading" id="sentinel-2-multispectral-imagery">Sentinel-2 Multispectral Imagery<a class="anchor" aria-label="anchor" href="#sentinel-2-multispectral-imagery"></a>
+</section><section><h2 class="section-heading" id="sentinel-2-multispectral-imagery">3. Sentinel-2 Multispectral Imagery<a class="anchor" aria-label="anchor" href="#sentinel-2-multispectral-imagery"></a>
 </h2>
 <hr class="half-width">
 <p>The <a href="https://www.copernicus.eu/en" class="external-link">Sentinel-2 satellite
-program</a>, launched in 2015 by the European Space Agency (ESA) as part
-of the EU’s Copernicus Earth observation programme, provides free,
-high-resolution multispectral imagery across 13 spectral bands. Two
-satellites (2A and 2B) image the Earth’s entire land surface
-approximately every 5 days at a resolution of 10 m in the visible bands
-— a significant improvement over the 15 m resolution of earlier free
-Landsat data.</p>
+program</a>, launched in 2015 by the European Space Agency as part of
+the EU’s Copernicus programme, provides free, high-resolution
+multispectral imagery across 13 spectral bands. Two satellites (2A and
+2B) image the entire land surface approximately every 5 days at 10 m
+resolution in the visible bands.</p>
 <p>Sentinel-2 imagery is especially useful for land cover
-classification, vegetation health monitoring (NDVI), environmental
-change detection, and heritage landscape analysis. Its combination of
-high spectral resolution (many band combinations), high temporal
-resolution (frequent revisits), and open access makes it one of the most
-valuable datasets for social science research involving
-human-environment interactions.</p>
-<hr>
+classification, vegetation health monitoring (NDVI), and environmental
+change detection.</p>
 <div class="section level3">
-<h3 id="navigating-the-copernicus-browser">Navigating the Copernicus Browser<a class="anchor" aria-label="anchor" href="#navigating-the-copernicus-browser"></a>
+<h3 id="searching-and-downloading-from-the-copernicus-browser">Searching and Downloading from the Copernicus Browser<a class="anchor" aria-label="anchor" href="#searching-and-downloading-from-the-copernicus-browser"></a>
 </h3>
-<div id="before-you-begin" class="callout">
-<div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
-</div>
-<span class="callout-header">Callout</span>
-<div id="before-you-begin" class="callout-inner">
-<h3 class="callout-title">Before You Begin</h3>
-<div class="callout-content">
-<p>Make sure you have a Copernicus Data Space account. If you do not
-have one, register for free at <a href="https://identity.dataspace.copernicus.eu/" class="external-link">https://identity.dataspace.copernicus.eu/</a>.</p>
-</div>
-</div>
-</div>
-<ol style="list-style-type: decimal">
-<li>Log in and navigate to the <a href="https://browser.dataspace.copernicus.eu/" class="external-link">Copernicus
-Browser</a>
-</li>
-<li>Use the map pane to zoom to your area of interest</li>
-</ol>
-<hr>
-</div>
-<div class="section level3">
-<h3 id="searching-for-imagery">Searching for Imagery<a class="anchor" aria-label="anchor" href="#searching-for-imagery"></a>
-</h3>
-<p>With the <strong>Visualize</strong> tab active in the left pane, set
-your search criteria from top to bottom:</p>
-<ul>
-<li>
-<strong>Date or date range</strong> — select a specific date or
-click “show latest data.” Days with available imagery are highlighted in
-blue.</li>
-<li>
-<strong>Cloud cover</strong> — use the slider to set a maximum
-(e.g., 10%)</li>
-<li>
-<strong>Satellite</strong> — select <strong>Sentinel-2</strong>
-</li>
-<li>
-<strong>Band combination</strong> — choose from preset layers such
-as True Color, NDVI, or Land Cover Classes</li>
-</ul>
-<p>Once your criteria are set, click <strong>Find products for current
-view</strong>. This opens the <strong>Search</strong> tab and lists
-available scenes. Each scene corresponds to a green square on the map
-that highlights when you hover over the listing.</p>
-</div>
-<div class="section level3">
-<h3 id="previewing-scenes">Previewing Scenes<a class="anchor" aria-label="anchor" href="#previewing-scenes"></a>
-</h3>
-<ul>
-<li>Click the <strong>i button</strong> on a listed scene (or click its
-green square on the map) to view detailed metadata</li>
-<li>Click the <strong>crosshairs icon</strong> to zoom to a scene on the
-map</li>
-<li>Click <strong>Visualize</strong> below a scene’s thumbnail to
-explore different band combinations interactively</li>
-<li>To adjust your search, click <strong>Go to search</strong> at the
-top of the pane, update your filters, and click <strong>Search</strong>
-again</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="downloading">Downloading<a class="anchor" aria-label="anchor" href="#downloading"></a>
-</h3>
-<ul>
-<li>Click the <strong>Download</strong> button on the right side of a
-scene listing</li>
-<li>The file size is shown above the button — downloads may take time
-depending on your connection</li>
-<li>The downloaded file is a <code>.SAFE.ZIP</code> archive — extract it
-and import the contents into QGIS for visualization</li>
-</ul>
-<div id="exercise-1-download-sentinel-2-imagery" class="callout discussion">
-<div class="callout-square">
-<i class="callout-icon" data-feather="message-circle"></i>
-</div>
-<span class="callout-header">Discussion</span>
-<div id="exercise-1-download-sentinel-2-imagery" class="callout-inner">
-<h3 class="callout-title">Exercise 1: Download Sentinel-2 Imagery</h3>
-<div class="callout-content">
-<ol style="list-style-type: decimal">
-<li>Log in to the Copernicus Browser</li>
-<li>Navigate to an area of interest and search for a recent,
-low-cloud-cover Sentinel-2 scene</li>
-<li>Preview it using the True Color and NDVI band combinations</li>
-<li>Download the scene</li>
-</ol>
-</div>
-</div>
-</div>
-<hr>
-</div>
-</section><section><h2 class="section-heading" id="srtm-digital-elevation-models">SRTM Digital Elevation Models<a class="anchor" aria-label="anchor" href="#srtm-digital-elevation-models"></a>
-</h2>
-<hr class="half-width">
-<p>The <a href="https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1" class="external-link">Shuttle
-Radar Topography Mission (SRTM)</a> was a joint international project in
-2000 that used radar data collected from the Space Shuttle
-<em>Endeavour</em> to produce one of the most accurate near-global
-digital elevation datasets of the Earth’s land surface.</p>
-<p>The most recent release, <strong>SRTM 1 Arc-Second Global (V3,
-2014)</strong>, has a ground resolution of approximately 30 m per pixel
-and an absolute vertical accuracy of about 16 m. The dataset is divided
-into individual 1° × 1° tiles available for free download as GeoTIFF
-files.</p>
-<p>When first imported into QGIS, raw DEM files appear as grayscale
-images — each pixel’s shade represents the elevation of that 30 × 30 m
-area. From this raw data you can generate hillshade models, slope and
-aspect maps, elevation classes, and contour lines. We will practice
-several of these techniques in <strong>Session 3a</strong>.</p>
-<hr>
-<div class="section level3">
-<h3 id="downloading-srtm-data-from-earthexplorer">Downloading SRTM Data from EarthExplorer<a class="anchor" aria-label="anchor" href="#downloading-srtm-data-from-earthexplorer"></a>
-</h3>
-<p>The download process is similar to the CORONA workflow from the
-previous page, using the same EarthExplorer interface.</p>
 <div id="before-you-begin-1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -805,60 +610,129 @@ previous page, using the same EarthExplorer interface.</p>
 <div id="before-you-begin-1" class="callout-inner">
 <h3 class="callout-title">Before You Begin</h3>
 <div class="callout-content">
-<p>Make sure you are logged in to your <a href="https://earthexplorer.usgs.gov/" class="external-link">USGS EarthExplorer</a>
-account.</p>
+<p>Make sure you have a Copernicus Data Space account. Register for free
+at <a href="https://identity.dataspace.copernicus.eu/" class="external-link">https://identity.dataspace.copernicus.eu/</a>.</p>
 </div>
 </div>
 </div>
+<ol style="list-style-type: decimal">
+<li>Log in and navigate to the <a href="https://browser.dataspace.copernicus.eu/" class="external-link">Copernicus
+Browser</a>
+</li>
+<li>Zoom to your area of interest in the map pane</li>
+</ol>
+<p>With the <strong>Visualize</strong> tab active, set your search
+criteria:</p>
+<ul>
+<li>
+<strong>Date or date range</strong> — select a date or click “show
+latest data”</li>
+<li>
+<strong>Cloud cover</strong> — use the slider to set a maximum
+(e.g., 10%)</li>
+<li>
+<strong>Satellite</strong> — select <strong>Sentinel-2</strong>
+</li>
+<li>
+<strong>Band combination</strong> — choose a preset such as True
+Color, NDVI, or Land Cover Classes</li>
+</ul>
+<p>Click <strong>Find products for current view</strong> to open the
+<strong>Search</strong> tab with matching scenes. Each scene corresponds
+to a green square on the map.</p>
 <div class="section level4">
-<h4 id="step-1-define-your-search-area">Step 1: Define Your Search Area<a class="anchor" aria-label="anchor" href="#step-1-define-your-search-area"></a>
+<h4 id="previewing-and-downloading">Previewing and Downloading<a class="anchor" aria-label="anchor" href="#previewing-and-downloading"></a>
 </h4>
 <ul>
-<li>Navigate to your area of interest in the map window</li>
-<li>Draw a search polygon or zoom in and click <strong>Use
-Map</strong>
-</li>
+<li>Click the <strong>i button</strong> on a scene to view metadata, or
+the <strong>crosshairs icon</strong> to zoom to it</li>
+<li>Click <strong>Visualize</strong> below a thumbnail to explore band
+combinations interactively</li>
+<li>To download, click the <strong>Download</strong> button on the right
+side of a listing — the file is a <code>.SAFE.ZIP</code> archive that
+can be extracted and imported into QGIS</li>
 </ul>
-</div>
-<div class="section level4">
-<h4 id="step-2-select-the-dataset">Step 2: Select the Dataset<a class="anchor" aria-label="anchor" href="#step-2-select-the-dataset"></a>
-</h4>
-<ul>
-<li>Click the <strong>Data Sets</strong> tab</li>
-<li>Expand <strong>Digital Elevation</strong> → expand
-<strong>SRTM</strong>
-</li>
-<li>Select <strong>SRTM 1 Arc-Second Global</strong>
-</li>
-</ul>
-</div>
-<div class="section level4">
-<h4 id="step-3-review-and-download">Step 3: Review and Download<a class="anchor" aria-label="anchor" href="#step-3-review-and-download"></a>
-</h4>
-<ul>
-<li>Click <strong>Results</strong> to see the available DEM tiles
-covering your area</li>
-<li>Use the <strong>Footprint</strong> and <strong>Image
-Overlay</strong> icons to preview tile coverage</li>
-<li>Click <strong>Download Options</strong> (disk icon with green arrow)
-and download the <strong>GeoTIFF</strong> format</li>
-<li>Save the file to your project folder</li>
-</ul>
-<p>The downloaded GeoTIFF is already georeferenced and ready to load
-directly into QGIS.</p>
-<div id="exercise-2-download-an-srtm-tile" class="callout discussion">
+<div id="exercise-2-download-sentinel-2-imagery" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <span class="callout-header">Discussion</span>
-<div id="exercise-2-download-an-srtm-tile" class="callout-inner">
-<h3 class="callout-title">Exercise 2: Download an SRTM Tile</h3>
+<div id="exercise-2-download-sentinel-2-imagery" class="callout-inner">
+<h3 class="callout-title">Exercise 2: Download Sentinel-2 Imagery</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
-<li>Log in to EarthExplorer and navigate to the same area you used for
-Sentinel-2</li>
-<li>Search for and download an SRTM 1 Arc-Second tile covering that
-area</li>
+<li>Search for a recent, low-cloud-cover Sentinel-2 scene over your area
+of interest</li>
+<li>Preview it using the True Color and NDVI band combinations</li>
+<li>Download the scene</li>
+</ol>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="srtm-digital-elevation-models">4. SRTM Digital Elevation Models<a class="anchor" aria-label="anchor" href="#srtm-digital-elevation-models"></a>
+</h2>
+<hr class="half-width">
+<p>The <a href="https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1" class="external-link">Shuttle
+Radar Topography Mission (SRTM)</a> was a joint international project in
+2000 that used radar from the Space Shuttle <em>Endeavour</em> to
+produce one of the most accurate near-global elevation datasets. The
+most recent release, <strong>SRTM 1 Arc-Second Global (V3,
+2014)</strong>, has ~30 m resolution and is divided into 1° × 1° tiles
+available as free GeoTIFF downloads.</p>
+<p>When loaded into QGIS, raw DEM files appear as grayscale images where
+each pixel’s shade represents the elevation of that 30 × 30 m area. From
+this data you can generate hillshade, slope, aspect, and contour layers
+— we will do exactly that in the next session.</p>
+<div class="section level3">
+<h3 id="downloading-from-earthexplorer">Downloading from EarthExplorer<a class="anchor" aria-label="anchor" href="#downloading-from-earthexplorer"></a>
+</h3>
+<p>The process follows the same EarthExplorer interface used for CORONA
+above.</p>
+<div class="section level4">
+<h4 id="step-1-define-your-search-area-1">Step 1: Define Your Search Area<a class="anchor" aria-label="anchor" href="#step-1-define-your-search-area-1"></a>
+</h4>
+<ul>
+<li>Navigate to your area of interest and draw a search polygon or click
+<strong>Use Map</strong>
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-2-select-the-dataset-1">Step 2: Select the Dataset<a class="anchor" aria-label="anchor" href="#step-2-select-the-dataset-1"></a>
+</h4>
+<ul>
+<li>Click the <strong>Data Sets</strong> tab</li>
+<li>Expand <strong>Digital Elevation</strong> → <strong>SRTM</strong> →
+select <strong>SRTM 1 Arc-Second Global</strong>
+</li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="step-3-download">Step 3: Download<a class="anchor" aria-label="anchor" href="#step-3-download"></a>
+</h4>
+<ul>
+<li>Click <strong>Results</strong> to see available tiles</li>
+<li>Use the <strong>Footprint</strong> icon to preview coverage</li>
+<li>Click <strong>Download Options</strong> and download the
+<strong>GeoTIFF</strong> format</li>
+<li>Save the file to your project folder</li>
+</ul>
+<p>The downloaded GeoTIFF is already georeferenced and ready to load
+into QGIS.</p>
+<div id="exercise-3-download-an-srtm-tile" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="exercise-3-download-an-srtm-tile" class="callout-inner">
+<h3 class="callout-title">Exercise 3: Download an SRTM Tile</h3>
+<div class="callout-content">
+<ol style="list-style-type: decimal">
+<li>Using EarthExplorer, download an SRTM tile covering the same area
+you used for Sentinel-2</li>
 <li>Load the GeoTIFF into QGIS — you should see a grayscale elevation
 image</li>
 </ol>
@@ -874,14 +748,14 @@ image</li>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>Sentinel-2 provides free, high-resolution multispectral imagery with
-a ~5-day revisit cycle, useful for land cover and vegetation
-analysis.</li>
-<li>SRTM DEM tiles provide 30 m resolution elevation data that can be
-used to generate hillshade, slope, contour, and other terrain
-visualizations.</li>
-<li>Both Sentinel-2 and SRTM data are georeferenced and can be loaded
-directly into QGIS.</li>
+<li>Scanned historical maps are widely available online but usually
+require georeferencing before use in a GIS.</li>
+<li>CORONA imagery (1960–1972) provides high-resolution historical views
+and is free from CAST (georeferenced) or EarthExplorer (raw).</li>
+<li>Sentinel-2 provides free, 10 m resolution multispectral imagery with
+a ~5-day revisit cycle.</li>
+<li>SRTM DEM tiles provide 30 m elevation data that can be used for
+terrain analysis in the next session.</li>
 </ul>
 </div>
 </div>
@@ -894,7 +768,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-dem-analysis"><p>Content from <a href="dem-analysis.html">DEM Analysis and Visualization in QGIS</a></p>
 <hr>
-<p>Last updated on 2026-06-23 |
+<p>Last updated on 2026-06-24 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/dem-analysis.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1009,7 +883,8 @@ Layer</strong>. Then right-click the reprojected layer, select
 <div class="callout-content">
 <p>This workshop uses study areas in Indiana, which falls within UTM
 zone 16N. If your area of interest is elsewhere, choose the appropriate
-UTM zone for your location.</p>
+UTM zone for your location. Check out this <a href="https://epsg.io/" class="external-link">website</a> to find out the correct projection
+for youre region!</p>
 </div>
 </div>
 </div>
@@ -1204,9 +1079,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://carpentries.github.io/workbench-template-md/aio.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/aio.html",
-  "dateCreated": "2026-06-23",
-  "dateModified": "2026-06-23",
-  "datePublished": "2026-06-23"
+  "dateCreated": "2026-06-24",
+  "dateModified": "2026-06-24",
+  "datePublished": "2026-06-24"
 }
 
   </script><script>

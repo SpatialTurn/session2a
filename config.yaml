@@ -67,8 +67,7 @@ contact: 'team@carpentries.org' # FIXME
 
 # Order of episodes in your lesson
 episodes: 
-- historical-imagery.md
-- satellite-elevation.md
+- acquiring-raster-data.md
 - dem-analysis.md
 
 # Information for Learners
