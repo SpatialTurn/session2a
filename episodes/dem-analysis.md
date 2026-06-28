@@ -1,5 +1,5 @@
 ---
-title: "DEM Analysis and Visualization in QGIS"
+title: "Exercises: DEM Analysis and Visualization in QGIS"
 teaching: 30
 exercises: 10
 ---

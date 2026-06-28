@@ -1,5 +1,5 @@
 ---
-title: "Acquiring Raster Data using Imagery Databases"
+title: "Exercises: Acquiring Raster Data using Imagery Databases"
 teaching: 40
 exercises: 15
 ---
